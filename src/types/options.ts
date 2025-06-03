@@ -28,6 +28,12 @@ export interface SelectedOption {
   code: string
   name: string
 }
+
+export interface InatPreyOption {
+  code: number
+  name: string
+}
+
 export type Severity = 'error' | 'secondary' | 'info' | 'success' | 'warn' | 'contrast'
 
 export function convertOptionsToSelectedOptions(options: Option[]): SelectedOption[] {
