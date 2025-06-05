@@ -1,16 +1,19 @@
 <template>
-  <div class="card">
-    <div v-if="data.length === 0">沒有需要檢查的資料</div>
-    <div v-else-if="!isLoading" class="grid grid-cols-4 gap-4">
-      <EmptyCheckingMediaCard
-        v-for="(medium, index) of data"
-        :medium="medium"
-        v-model="mediaAiMissedMarks[index]"
-        @toggle="handleToggle(index)"
-      ></EmptyCheckingMediaCard>
-    </div>
-    <div v-else><Loading></Loading></div>
-  </div>
+  <Card>
+    <template #title>選擇不是空拍的影像</template>
+    <template #content>
+      <div v-if="data.length === 0">沒有需要檢查的資料</div>
+      <div v-else-if="!isLoading" class="grid grid-cols-4 gap-4">
+        <EmptyCheckingMediaCard
+          v-for="(medium, index) of data"
+          :medium="medium"
+          v-model="mediaAiMissedMarks[index]"
+          @toggle="handleToggle(index)"
+        ></EmptyCheckingMediaCard>
+      </div>
+      <div v-else><Loading></Loading></div>
+    </template>
+  </Card>
 
   <Button
     class="mt-6 mb-12"

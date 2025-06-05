@@ -37,6 +37,13 @@ export type UncheckedMediaQuery = {
   month?: number
 }
 
+export type UnidentifiedIndividualsQuery = {
+  perch_mount_ids?: string[]
+  section_ids?: string[]
+  year?: number
+  month?: number
+}
+
 export type Medium = {
   id: string
   section_id: string

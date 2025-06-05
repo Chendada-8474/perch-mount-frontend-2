@@ -1,6 +1,6 @@
 <template>
-  <DeveloperIsWorking></DeveloperIsWorking>
+  <IdentifyPreyView></IdentifyPreyView>
 </template>
 <script lang="ts">
-import DeveloperIsWorking from '@/components/DeveloperIsWorking.vue'
+import IdentifyPreyView from '@/components/views/IdentifyPreyView.vue'
 </script>
