@@ -7,11 +7,13 @@ const ROOT_INDIVIDUALS_PATH = '/api/perchai/individuals/'
 export async function getUnidentifedIndividualsByQuery(
   query: UnidentifiedIndividualsQuery,
 ): Promise<Array<Individual>> {
-  const paramsURL = buildIndividualsQueryURL(query)
+  const paramsURL = buildUnidentifiedIndividualsQueryURL(query)
   return await perchAIApi.get<Array<Individual>>(`${ROOT_INDIVIDUALS_PATH}?${paramsURL.toString()}`)
 }
 
-function buildIndividualsQueryURL(query: UnidentifiedIndividualsQuery): URLSearchParams {
+function buildUnidentifiedIndividualsQueryURL(
+  query: UnidentifiedIndividualsQuery,
+): URLSearchParams {
   const params = new URLSearchParams()
 
   params.set('prey_status', 'unidentified')

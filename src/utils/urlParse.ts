@@ -4,7 +4,7 @@ import {
   type RouteLocationNormalizedLoaded,
 } from 'vue-router'
 import type { SectionsQuery } from '@/types/sections'
-import type { UncheckedMediaQuery } from '@/types/media'
+import type { UncheckedMediaQuery, UnidentifiedIndividualsQuery } from '@/types/media'
 
 export function getSectionsQueryFromRoute(
   route: RouteLocationNormalizedLoadedGeneric,
@@ -48,5 +48,36 @@ export function useMediaOperationQuery(route: RouteLocationNormalizedLoaded): Un
   if (typeof query.month === 'number') {
     result.month = query.month
   }
+  return result
+}
+
+export function useUnidentifiedIndividualsQuery(
+  route: RouteLocationNormalizedLoaded,
+): UnidentifiedIndividualsQuery {
+  const query = route.query
+  const result: UnidentifiedIndividualsQuery = {}
+
+  if (typeof query.perch_mount_ids === 'string') {
+    result.perch_mount_ids = query.perch_mount_ids.split(',')
+  }
+
+  if (typeof query.section_ids === 'string') {
+    result.section_ids = query.section_ids.split(',')
+  }
+
+  if (typeof query.year === 'string') {
+    const parsedYear = parseInt(query.year)
+    if (!isNaN(parsedYear)) {
+      result.year = parsedYear
+    }
+  }
+
+  if (typeof query.month === 'string') {
+    const parsedMonth = parseInt(query.month)
+    if (!isNaN(parsedMonth)) {
+      result.month = parsedMonth
+    }
+  }
+
   return result
 }
