@@ -1,3 +1,5 @@
+import type { SelectedOption } from './options'
+
 export interface InatTaxa {
   id: number
   rank: string
@@ -38,4 +40,9 @@ export interface InatTaxa {
   matched_term: string
   iconic_taxon_name: string
   preferred_common_name: string
+}
+
+export interface SelectedPrey extends SelectedOption {
+  defaultPhotoUrl: string
+  iconicTaxonName: string
 }

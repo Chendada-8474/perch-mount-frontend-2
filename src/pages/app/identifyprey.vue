@@ -1,7 +1,7 @@
 <template>
   <IdentifyPreyView :query="query"></IdentifyPreyView>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import IdentifyPreyView from '@/components/views/IdentifyPreyView.vue'
 import { useUnidentifiedIndividualsQuery } from '@/utils/urlParse'
 import { useRoute } from 'vue-router'
