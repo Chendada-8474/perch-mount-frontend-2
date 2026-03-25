@@ -11,7 +11,6 @@
         <div>
           <InputText class="my-2" type="text" size="small" />
         </div>
-        <div>prey</div>
       </div>
     </template>
   </Card>

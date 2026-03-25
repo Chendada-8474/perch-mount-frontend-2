@@ -3,7 +3,7 @@ import type { InatTaxa } from '@/types/inat'
 import { type InatPreyOption } from '@/types/options'
 import { ref } from 'vue'
 
-export function useBehaviorOptions() {
+export function usePreyOptions() {
   const preyOptions = ref<Array<InatPreyOption>>([])
   const isLoading = ref(false)
   const error = ref<Error | null>(null)

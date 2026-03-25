@@ -13,7 +13,11 @@
     <div v-else><Loading></Loading></div>
   </div>
 
-  <Drawer v-model:visible="inatPreySelectorVisible" header="Right Drawer" position="right">
+  <div class="fixed bottom-4 right-4 z-50">
+    <Button icon="pi pi-search" @click="inatPreySelectorVisible = true" rounded />
+  </div>
+
+  <Drawer v-model:visible="inatPreySelectorVisible" header="Inat 獵物" position="right">
     <InatPreySelector></InatPreySelector>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
