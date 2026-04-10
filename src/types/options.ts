@@ -32,6 +32,7 @@ export interface SelectedOption {
 export interface InatPreyOption {
   code: number
   name: string
+  photoURL: string
 }
 
 export type Severity = 'error' | 'secondary' | 'info' | 'success' | 'warn' | 'contrast'

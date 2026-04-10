@@ -74,6 +74,7 @@ declare module 'vue' {
     InputNumber: typeof import('primevue/inputnumber')['default']
     InputText: typeof import('primevue/inputtext')['default']
     InsertingBox: typeof import('./src/components/BoxCanvas/InsertingBox.vue')['default']
+    Listbox: typeof import('primevue/listbox')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     MapWithPoints: typeof import('./src/components/MapWithPoints.vue')['default']
     Me: typeof import('./src/components/Me.vue')['default']

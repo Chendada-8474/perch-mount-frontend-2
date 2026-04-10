@@ -33,5 +33,6 @@ function convertToInatPreyOptions(data: InatTaxa[]): InatPreyOption[] {
   return data.map((item) => ({
     code: item.id,
     name: item.matched_term,
+    photoURL: item.default_photo.url,
   }))
 }

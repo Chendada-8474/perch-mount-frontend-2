@@ -18,18 +18,14 @@
   </div>
 
   <Drawer v-model:visible="inatPreySelectorVisible" header="Inat 獵物" position="right">
-    <InatPreySelector></InatPreySelector>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <InatPreySelector @prey-selected="handlePreySelected"></InatPreySelector>
   </Drawer>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useUnidentifiedIndividualsByQuery } from '@/composables/individuals/useUnidentifiedIndividuals'
 import type { UnidentifiedIndividualsQuery } from '@/types/media'
+import type { InatPreyOption } from '@/types/options'
 
 import InatPreySelector from '../forms/InatPreySelector.vue'
 import Loading from '@/components/Loading.vue'
@@ -73,5 +69,9 @@ const handleSelected = (mediumIndex: number) => {
 }
 const handleShiftSelected = (mediumIndex: number) => {
   selectFromLast(mediumIndex)
+}
+
+const handlePreySelected = (prey: null | InatPreyOption) => {
+  console.log(prey) // TODO
 }
 </script>
