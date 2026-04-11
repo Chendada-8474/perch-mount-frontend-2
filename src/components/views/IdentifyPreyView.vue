@@ -1,13 +1,15 @@
 <template>
   <div class="card">
     <div v-if="individuals.length === 0">沒有需要檢查的資料</div>
-    <div v-else-if="!isIndividualsLoading" class="grid grid-cols-4 gap-4">
+    <div v-else-if="!isIndividualsLoading" class="grid grid-cols-4 gap-4" @click.self="cancelAll()">
       <IdentifyingPreyIndividualCard
         v-for="(individual, index) of individuals"
         :individual="individual"
+        :prey="identifyingPreys[index]"
         v-model:checked="selects[index]"
         @selected="handleSelected(index)"
         @shift-selected="handleShiftSelected(index)"
+        @prey-input-tried="handPreyInputTried"
       ></IdentifyingPreyIndividualCard>
     </div>
     <div v-else><Loading></Loading></div>
@@ -32,6 +34,7 @@ import Loading from '@/components/Loading.vue'
 import IdentifyingPreyIndividualCard from '../cards/IdentifyingPreyIndividualCard.vue'
 import { useIdentifyingSubmission } from '@/composables/individuals/useIdentifyingSubmission'
 import { useBooleansSelector } from '@/composables/useABooleansSelector'
+import { useIdentifyingPreys } from '@/composables/inat/useIdentifyingPreys'
 
 const props = defineProps<{
   query: UnidentifiedIndividualsQuery
@@ -59,9 +62,12 @@ const {
   cancelAll,
 } = useBooleansSelector()
 
+const { data: identifyingPreys, init: initIdentifyingPreys } = useIdentifyingPreys()
+
 onMounted(async () => {
   await fetchIndividuals(props.query)
   init(individuals.value.length)
+  initIdentifyingPreys(individuals.value.length)
 })
 
 const handleSelected = (mediumIndex: number) => {
@@ -72,6 +78,18 @@ const handleShiftSelected = (mediumIndex: number) => {
 }
 
 const handlePreySelected = (prey: null | InatPreyOption) => {
-  console.log(prey) // TODO
+  selects.value.forEach((select, index) => {
+    if (select && prey) {
+      identifyingPreys.value[index] = {
+        code: prey.code,
+        name: prey.name,
+        photoURL: prey.photoURL,
+      }
+    }
+  })
+}
+
+const handPreyInputTried = () => {
+  inatPreySelectorVisible.value = true
 }
 </script>
