@@ -1,14 +1,20 @@
-import type { Individual } from '@/types/individuals'
+import type { Individual, IdentidiedPrey } from '@/types/individuals'
 import type { UnidentifiedIndividualsQuery } from '@/types/media'
+
 import { perchAIApi } from '@/services/perchAI/api'
 
 const ROOT_INDIVIDUALS_PATH = '/api/perchai/individuals/'
+const ROOT_IDENTIFY_PREY_PATH = '/api/perchai/identified_preys/  '
 
 export async function getUnidentifedIndividualsByQuery(
   query: UnidentifiedIndividualsQuery,
 ): Promise<Array<Individual>> {
   const paramsURL = buildUnidentifiedIndividualsQueryURL(query)
   return await perchAIApi.get<Array<Individual>>(`${ROOT_INDIVIDUALS_PATH}?${paramsURL.toString()}`)
+}
+
+export async function addIdentifyPreys(preys: IdentidiedPrey[]) {
+  await perchAIApi.post(ROOT_IDENTIFY_PREY_PATH, { body: preys })
 }
 
 function buildUnidentifiedIndividualsQueryURL(

@@ -32,7 +32,7 @@ import type { InatPreyOption } from '@/types/options'
 import InatPreySelector from '../forms/InatPreySelector.vue'
 import Loading from '@/components/Loading.vue'
 import IdentifyingPreyIndividualCard from '../cards/IdentifyingPreyIndividualCard.vue'
-import { useIdentifyingSubmission } from '@/composables/individuals/useIdentifyingSubmission'
+import { useIdentifyingPreysSubmission } from '@/composables/individuals/useIdentifyingSubmission'
 import { useBooleansSelector } from '@/composables/useABooleansSelector'
 import { useIdentifyingPreys } from '@/composables/inat/useIdentifyingPreys'
 
@@ -49,7 +49,12 @@ const {
   fetch: fetchIndividuals,
 } = useUnidentifiedIndividualsByQuery()
 
-const { submitting, submitted, error: submitError } = useIdentifyingSubmission()
+const {
+  submitting,
+  submitted,
+  error: submitError,
+  submit: identifiedPreySubmit,
+} = useIdentifyingPreysSubmission()
 
 const {
   selects,

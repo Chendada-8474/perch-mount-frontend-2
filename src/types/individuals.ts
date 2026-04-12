@@ -144,3 +144,9 @@ function isReviewingIndividual(
 ): individual is ReviewingIndividual {
   return 'id' in individual
 }
+
+export type IdentidiedPrey = {
+  individual_id: string
+  inaturalist_taxa_id: number
+  identifier_id: string
+}
