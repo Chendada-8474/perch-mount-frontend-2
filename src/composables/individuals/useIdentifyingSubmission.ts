@@ -5,7 +5,7 @@ import type { CheckedMedium, Medium } from '@/types/media'
 import { type InatPreyOption } from '@/types/options'
 import { addCheckedMedia } from '@/services/perchAI/media'
 import type { SelectedPrey } from '@/types/inat'
-import { type IdentidiedPrey, type Individual } from '@/types/individuals'
+import { type IdentifiedPrey, type Individual } from '@/types/individuals'
 import { addIdentifyPreys } from '@/services/perchAI/individuals'
 
 const auth = useAuth()
@@ -17,6 +17,7 @@ export function useIdentifyingPreysSubmission() {
   const submit = async (preys: InatPreyOption[], individuals: Individual[]) => {
     submitting.value = true
     const identifiedPreys = convertPreyOptionsToIdentifiedPreys(preys, individuals)
+    console.log(identifiedPreys)
     try {
       await addIdentifyPreys(identifiedPreys)
     } catch (err) {
@@ -36,12 +37,12 @@ export function useIdentifyingPreysSubmission() {
 }
 
 function convertPreyOptionsToIdentifiedPreys(
-  preys: InatPreyOption[],
+  preys: (InatPreyOption | null)[],
   individuals: Individual[],
-): IdentidiedPrey[] {
+): IdentifiedPrey[] {
   return preys.map((prey, index) => ({
     individual_id: individuals[index].id,
-    inaturalist_taxa_id: prey.code,
+    inaturalist_taxa_id: prey ? prey.code : null,
     identifier_id: auth.currentUser!.id,
   }))
 }

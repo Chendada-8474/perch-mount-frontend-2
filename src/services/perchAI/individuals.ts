@@ -1,4 +1,4 @@
-import type { Individual, IdentidiedPrey } from '@/types/individuals'
+import type { Individual, IdentifiedPrey } from '@/types/individuals'
 import type { UnidentifiedIndividualsQuery } from '@/types/media'
 
 import { perchAIApi } from '@/services/perchAI/api'
@@ -13,7 +13,7 @@ export async function getUnidentifedIndividualsByQuery(
   return await perchAIApi.get<Array<Individual>>(`${ROOT_INDIVIDUALS_PATH}?${paramsURL.toString()}`)
 }
 
-export async function addIdentifyPreys(preys: IdentidiedPrey[]) {
+export async function addIdentifyPreys(preys: IdentifiedPrey[]) {
   await perchAIApi.post(ROOT_IDENTIFY_PREY_PATH, { body: preys })
 }
 

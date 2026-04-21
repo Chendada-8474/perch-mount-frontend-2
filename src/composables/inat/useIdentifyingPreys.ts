@@ -1,5 +1,5 @@
 import { type InatPreyOption } from '@/types/options'
-import { type IdentidiedPrey, type Individual } from '@/types/individuals'
+import { type IdentifiedPrey, type Individual } from '@/types/individuals'
 import { ref } from 'vue'
 
 import { useAuth } from '@/composables/useAuth'

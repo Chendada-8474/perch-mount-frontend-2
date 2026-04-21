@@ -145,8 +145,8 @@ function isReviewingIndividual(
   return 'id' in individual
 }
 
-export type IdentidiedPrey = {
+export type IdentifiedPrey = {
   individual_id: string
-  inaturalist_taxa_id: number
+  inaturalist_taxa_id: number | null
   identifier_id: string
 }

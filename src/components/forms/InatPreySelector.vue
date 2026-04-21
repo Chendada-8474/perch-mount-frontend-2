@@ -1,5 +1,13 @@
 <template>
-  <InputText v-model="preyName" class="my-2" type="text" size="small" @focusout="handleFocusout" />
+  <InputText
+    placeholder="搜尋獵物名稱"
+    v-model="preyName"
+    class="my-2"
+    type="text"
+    size="small"
+    @focusout="handleFocusout"
+  />
+  <p class="mt-6">搜尋結果：</p>
   <Listbox
     v-model="selected"
     :options="options"
