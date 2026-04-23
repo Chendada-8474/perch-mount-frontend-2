@@ -17,7 +17,6 @@ export function useIdentifyingPreysSubmission() {
   const submit = async (preys: InatPreyOption[], individuals: Individual[]) => {
     submitting.value = true
     const identifiedPreys = convertPreyOptionsToIdentifiedPreys(preys, individuals)
-    console.log(identifiedPreys)
     try {
       await addIdentifyPreys(identifiedPreys)
     } catch (err) {
