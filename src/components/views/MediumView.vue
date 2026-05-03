@@ -7,7 +7,7 @@
         </div>
       </template>
       <div class="grid grid-cols-2 gap-8">
-        <S3Medium :id="medium?.id!" :is-image="medium?.medium_type == 'image'"></S3Medium>
+        <S3Medium :medium="medium"></S3Medium>
         <div class="card">
           <div class="grid grid-cols-4 gap-4">
             <div class="col-span-2">

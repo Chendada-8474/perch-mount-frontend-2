@@ -28,7 +28,7 @@
     ></IndividualBox>
     <img
       ref="image"
-      :src="convertIDToS3Link(reviewingMedium.id, true)"
+      :src="getS3MediumLink(reviewingMedium.s3_file_name)"
       alt="Image"
       draggable="false"
     />
@@ -43,7 +43,7 @@
 import { onMounted, ref } from 'vue'
 import type { ReviewingMedium } from '@/types/media'
 import type { BoundingBox } from '@/types/individuals'
-import { convertIDToS3Link } from '@/composables/media/s3'
+import { getS3MediumLink } from '@/composables/media/s3'
 import { useCanvas, usePostionIndicator } from '@/composables/canvas/useCanvas'
 
 import IndicatorLine from '@/components/BoxCanvas/IndicatorLine.vue'

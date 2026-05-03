@@ -1,13 +1,19 @@
 <template>
-  <Image v-if="isImage" :src="convertIDToS3Link(id, isImage)" alt="Image" preview />
-  <video v-else :src="convertIDToS3Link(id, isImage)" controls></video>
+  <Image v-if="!medium" :src="'@/assets/demo_media.jpg'" />
+  <Image
+    v-else-if="medium.medium_type === 'image'"
+    :src="getS3MediumLink(medium.s3_file_name)"
+    alt="Image"
+    preview
+  />
+  <video v-else :src="getS3MediumLink(medium.s3_file_name)" controls></video>
 </template>
 
 <script setup lang="ts">
-import { convertIDToS3Link } from '@/composables/media/s3'
+import { getS3MediumLink } from '@/composables/media/s3'
+import type { Medium } from '@/types/media'
 
 const props = defineProps<{
-  id: string
-  isImage: boolean
+  medium: Medium | null
 }>()
 </script>

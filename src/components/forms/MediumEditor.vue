@@ -7,7 +7,7 @@
         :reviewing-medium="localReviewingMedium"
         @box-created="handleBoxCreated"
       ></BoxCanvas>
-      <S3Medium v-else :id="medium.id" :is-image="false"></S3Medium>
+      <S3Medium v-else :medium="medium"></S3Medium>
     </div>
     <div>
       <div class="grid grid-cols-12 gap-4">

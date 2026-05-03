@@ -1,7 +1,7 @@
 <template>
   <Card>
     <template #header>
-      <S3Medium :id="medium.id" :isImage="medium.medium_type == 'image'"></S3Medium>
+      <S3Medium :medium="medium"></S3Medium>
     </template>
     <template #title>
       {{ joinIndividualsfield(medium.individuals, 'human', ', ', 'chinese_common_name') }}

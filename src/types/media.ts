@@ -52,6 +52,7 @@ export type Medium = {
   nas_path: string
   medium_datetime: string // ISO 格式 e.g. "2025-02-14T21:25:00"
   created_at: string // ISO 格式
+  s3_file_name: string | null
 
   // 各內容狀態（nullable）
   detected_contents?: MediaDetectedContents | null
@@ -101,6 +102,7 @@ export type ReviewingMedium = {
   individuals: ReviewingIndividual[]
   ai_missed_individuals: AIMissedReviewingIndividual[]
   note: string | null
+  s3_file_name: string | null
 }
 
 export interface ReviewedMedium {
@@ -111,6 +113,7 @@ export interface ReviewedMedium {
   event_id?: string | null
   behavior_id?: string | null
   individuals: ReviewedIndividual[]
+  s3_file_name: string | null
 }
 
 export interface CheckedMedium {
@@ -118,6 +121,7 @@ export interface CheckedMedium {
   empty_checked_at: string // ISO DateTime string (e.g., "2025-04-24T13:45:00.000Z")
   empty_checker_id: string // UUID
   has_individual: boolean
+  s3_file_name: string | null
 }
 
 export interface HighlightFilter {
@@ -196,6 +200,7 @@ export function convertToReviewingMedia(media: Medium[]): ReviewingMedium[] {
       individuals,
       ai_missed_individuals: [],
       note: null,
+      s3_file_name: medium.s3_file_name,
     }
   })
 }
@@ -218,6 +223,7 @@ export async function convertReviewingToReviewedMedia(
       event_id: medium.selected_event?.code,
       behavior_id: medium.selected_behavior?.code,
       individuals: individuals,
+      s3_file_name: medium.s3_file_name,
     }
   })
 }

@@ -6,7 +6,8 @@
     <template #content>
       <div class="grid gap-4 grid-cols-2">
         <div class="col-span-2">
-          <S3Medium :id="individual.medium_id" :is-image="true"></S3Medium>
+          <!-- TODO: This need to find a solution to get medium object then put in here -->
+          <S3Medium :medium="null"></S3Medium>
         </div>
         <div class="col-span-2">
           <Chip
@@ -30,6 +31,7 @@
 <script setup lang="ts">
 import type { Individual } from '@/types/individuals'
 import type { InatPreyOption } from '@/types/options'
+import type { Medium } from '@/types/media'
 
 import S3Medium from '../S3Medium.vue'
 import { computed, ref, watch } from 'vue'

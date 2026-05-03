@@ -4,6 +4,7 @@
 interface AppEnv {
   API_BASE_URL: string
   GOOGLE_CLIENT_ID: string
+  S3_BASE_URL: string
 }
 
 interface Window {

@@ -25,7 +25,7 @@
     </template>
     <template #content>
       <div>
-        <S3Medium :id="medium.id" :is-image="medium.medium_type == 'image'"></S3Medium>
+        <S3Medium :medium="medium"></S3Medium>
         <div class="grid grid-cols-12 gap-1 mb-3">
           <div class="col-span-3 font-bold">AI 物種</div>
           <div class="col-span-5 font-bold">更正物種</div>

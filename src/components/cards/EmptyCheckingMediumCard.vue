@@ -5,7 +5,7 @@
     </template>
     <template #content>
       <div @click.stop>
-        <S3Medium :id="medium.id" :is-image="medium.medium_type == 'image'"></S3Medium>
+        <S3Medium :medium="medium"></S3Medium>
       </div>
     </template>
   </Card>
