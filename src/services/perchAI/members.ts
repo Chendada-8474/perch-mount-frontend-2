@@ -22,3 +22,15 @@ export const blockMember = async (id: string) => {
 export const unblockMember = async (id: string) => {
   await perchAIApi.del(`${ROOT_MEMBERS_PATH}${id}/block/`)
 }
+
+export const grandAdminPrivileges = async (id: string) => {
+  await perchAIApi.post(`${ROOT_MEMBERS_PATH}${id}/admin/`)
+}
+
+export const ungrandAdminPrivileges = async (id: string) => {
+  await perchAIApi.del(`${ROOT_MEMBERS_PATH}${id}/admin/`)
+}
+
+export const grandSuperAdminPrivileges = async (id: string) => {
+  await perchAIApi.post(`${ROOT_MEMBERS_PATH}${id}/super_admin/`)
+}

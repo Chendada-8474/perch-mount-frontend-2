@@ -23,8 +23,18 @@
       </template>
     </Column>
     <Column field="position" header="職稱" sortable></Column>
-    <Column field="is_admin" header="Admin" sortable></Column>
-    <Column field="is_super_admin" header="Super Admin" sortable></Column>
+    <Column field="is_admin" header="Admin" sortable>
+      <template #body="slotProps">
+        <i v-if="slotProps.data.is_admin" class="pi pi-check-circle" style="color: green"></i>
+        <i v-else class="pi pi-times-circle" style="color: red"></i>
+      </template>
+    </Column>
+    <Column field="is_super_admin" header="Super Admin" sortable>
+      <template #body="slotProps">
+        <i v-if="slotProps.data.is_super_admin" class="pi pi-check-circle" style="color: green"></i>
+        <i v-else class="pi pi-times-circle" style="color: red"></i>
+      </template>
+    </Column>
 
     <Column>
       <template #body="slotProps">
@@ -58,17 +68,54 @@
         ></Button>
       </template>
     </Column>
+    <Column>
+      <template #body="slotProps">
+        <Button
+          v-if="
+            !slotProps.data.is_admin && auth.currentUser?.is_admin && !slotProps.data.is_super_admin
+          "
+          severity="success"
+          label="授權 Admin"
+          variant="outlined"
+          @click="handleGrandAdminClick(slotProps.data.id)"
+        ></Button>
+        <Button
+          v-if="
+            slotProps.data.is_admin &&
+            auth.currentUser?.is_super_admin &&
+            !slotProps.data.is_super_admin
+          "
+          severity="warn"
+          label="撤銷 Admin"
+          variant="outlined"
+          @click="handleUngrandAdminClick(slotProps.data.id)"
+        ></Button>
+      </template>
+    </Column>
+    <Column v-if="auth.currentUser?.is_super_admin">
+      <template #body="slotProps">
+        <Button
+          v-if="!slotProps.data.is_super_admin"
+          severity="success"
+          label="授權 Super Admin"
+          variant="outlined"
+          @click="handleGrandSuperAdminClick(slotProps.data.id)"
+        ></Button>
+      </template>
+    </Column>
   </DataTable>
 </template>
 <script setup lang="ts">
 import { useMembers } from '@/composables/members/useMembers'
 import { onMounted } from 'vue'
+import { useAuth } from '@/composables/useAuth'
+import { useToast } from 'primevue'
 
 import MemberNameWithPhoto from '../MemberNameWithPhoto.vue'
 import { useManageMember } from '@/composables/members/useMemberByID'
-import { useToast } from 'primevue'
 
 const toast = useToast()
+const auth = useAuth()
 
 const {
   data: members,
@@ -83,6 +130,9 @@ const {
   fetchActivate,
   fetchBlock,
   fetchUnblock,
+  fetchGrantAdminPrivileges,
+  fetchUngrantAdminPrivileges,
+  fetchGrantSuperAdminPrivileges,
 } = useManageMember(toast)
 
 onMounted(() => {
@@ -99,6 +149,20 @@ const handleBlockClick = async (id: string) => {
 }
 const handleUnblockClick = async (id: string) => {
   await fetchUnblock(id)
+  await fetchMembers()
+}
+
+const handleGrandAdminClick = async (id: string) => {
+  await fetchGrantAdminPrivileges(id)
+  await fetchMembers()
+}
+const handleUngrandAdminClick = async (id: string) => {
+  await fetchUngrantAdminPrivileges(id)
+  await fetchMembers()
+}
+
+const handleGrandSuperAdminClick = async (id: string) => {
+  await fetchGrantSuperAdminPrivileges(id)
   await fetchMembers()
 }
 </script>
