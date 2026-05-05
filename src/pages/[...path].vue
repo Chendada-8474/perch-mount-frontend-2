@@ -1,6 +1,6 @@
 <template>
   <img
-    src="https://raw.githubusercontent.com/SAWARATSUKI/KawaiiLogos/refs/heads/main/ResponseCode/404%20NotFound.png"
+    src="https://github.com/SAWARATSUKI/KawaiiLogos/blob/main/ResponseCode/png/404%20NotFound.png?raw=true"
     alt=""
   />
 </template>

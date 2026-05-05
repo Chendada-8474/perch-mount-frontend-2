@@ -4,7 +4,7 @@
   </div>
   <div v-else>
     <img
-      src="https://raw.githubusercontent.com/SAWARATSUKI/KawaiiLogos/refs/heads/main/ResponseCode/403%20Forbidden.png"
+      src="https://github.com/SAWARATSUKI/KawaiiLogos/blob/main/ResponseCode/png/403%20Forbidden.png?raw=true"
       alt="403 Forbidden"
     />
   </div>
