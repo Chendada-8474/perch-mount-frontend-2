@@ -55,6 +55,7 @@ function convertMediaToCheckedMedia(media: Medium[], missedMarks: boolean[]): Ch
       empty_checked_at: nowIsoString,
       empty_checker_id: auth.currentUser!.id,
       has_individual: missedMarks[i],
+      s3_file_name: media[i].s3_file_name,
     })
   }
   return checkedMedia
