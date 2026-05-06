@@ -1,6 +1,6 @@
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
-interface ApiOptions {
+export interface ApiOptions {
   headers?: Record<string, string>
   body?: any
   redirectOnUnauthorized?: boolean
