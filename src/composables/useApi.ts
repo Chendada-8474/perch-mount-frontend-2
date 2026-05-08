@@ -24,6 +24,8 @@ async function apiFetch<T>(
 
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
+    'Accept-Language': 'zh-TW',
+    'X-Custom-Header': 'PerchAI',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...options.headers,
   }
@@ -32,6 +34,7 @@ async function apiFetch<T>(
     const response = await fetch(endpoint, {
       method,
       headers,
+      // mode: 'cors',
       body: options.body ? JSON.stringify(options.body) : undefined,
     })
 
