@@ -6,7 +6,7 @@
           <div class="relative inline-block">
             <Image
               imageClass="rounded-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg object-cover"
-              src="/src/assets/images/black_winged_kite.jpg"
+              src="/images/black_winged_kite.jpg"
               alt="Image"
             />
             <div class="absolute inset-0 flex items-center justify-center">
@@ -22,7 +22,7 @@
           <div class="relative inline-block">
             <Image
               imageClass="rounded-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg object-cover"
-              src="/src/assets/images/grass_owl.jpg"
+              src="/images/grass_owl.jpg"
               alt="Image"
             />
             <div class="absolute inset-0 flex items-center justify-center">

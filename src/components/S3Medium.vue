@@ -1,5 +1,5 @@
 <template>
-  <Image v-if="!medium" :src="'@/assets/demo_media.jpg'" />
+  <Image v-if="!medium" :src="'/images/demo_media.jpg'" />
   <Image
     v-else-if="medium.medium_type === 'image'"
     :src="getS3MediumLink(medium.s3_file_name)"
