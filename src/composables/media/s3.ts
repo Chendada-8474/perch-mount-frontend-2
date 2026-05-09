@@ -5,7 +5,7 @@ const env = useEnv()
 // This is a devolepment function for environment without S3 service.
 export const getS3MediumLink = (s3FileName: string | null): string => {
   // 1. 防呆：如果沒有傳入檔名，回傳 null
-  if (!s3FileName) return '@/assets/demo_media.jpg'
+  if (!s3FileName) return '/images/demo_media.jpg'
 
   try {
     // 2. 依然先清理斜線，避免組合出不合法的雙斜線
